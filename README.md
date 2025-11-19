@@ -25,7 +25,6 @@ The app provides a smooth and intuitive UI for both **Authenticated Users** and 
 - Auto-summary generation
 
 ## 📁 Project Structure
-
 📂 Pizza-Heaven/
 │
 ├── signin.html
