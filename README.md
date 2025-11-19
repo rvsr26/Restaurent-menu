@@ -36,25 +36,20 @@ The app provides a smooth and intuitive UI for both **Authenticated Users** and 
 - Font Awesome 6 Icons  
 
 ---
+## 📸 Website Preview
 
-## 📁 Project Structure
+### 🟦 1. Sign In Page
+![Sign In Screenshot](<img width="1919" height="1030" alt="image" src="https://github.com/user-attachments/assets/4b1be17b-fb93-4643-b715-1c2e101bad52" />
+)
 
-📂 Pizza-Heaven/
-│
-├── index.html
-├── menu.html
-├── payment.html
-│
-├── signin.css
-├── menu.css
-├── payment.css
-│
-├── firebase_config.js
-├── signin.js
-├── menu.js
-├── payment.js
-│
-└── README.md
+### 🟧 2. Menu & Cart Page
+![Menu Screenshot](<img width="1894" height="1028" alt="image" src="https://github.com/user-attachments/assets/59ccadd9-0b41-4a28-b53d-59abfe23cb55" />
+)
+
+### 🟩 3. Checkout Page
+![Checkout Screenshot](<img width="1807" height="1025" alt="image" src="https://github.com/user-attachments/assets/8ad8e9f8-944d-4e1b-baa7-b567b8c5bd27" />
+)
+
 
 ---
 
