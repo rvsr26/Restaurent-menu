@@ -1,55 +1,36 @@
-🍕 Pizza Heaven – Modern Food Ordering Web App
+# 🍕 Pizza Heaven – Modern Food Ordering Web App
 
-Pizza Heaven is a responsive and user-friendly food ordering application built using HTML, CSS, JavaScript, and Google Firebase.
-It features Hybrid Authentication, real-time cart syncing, and a seamless checkout flow designed for both authenticated and guest users.
+**Pizza Heaven** is a responsive and feature-rich food ordering web application built using **HTML, CSS, JavaScript**, and **Google Firebase**.
+The app provides a smooth and intuitive UI for both **Authenticated Users** and **Guest Users**, with real-time cart management and a simple checkout flow.
 
-⭐ Features
-🔐 Hybrid Authentication
+## 🚀 Key Features
 
-Login / Signup using:
+### 🔐 Hybrid Authentication
+- Login / Signup using:
+  - **Email & Password**
+  - **Google OAuth**
+- **Guest Mode**
+- Animated UI transitions
 
-Email & Password
+### 🍕 Dynamic Menu & Smart Cart
+- Cloud Firestore cart sync for logged-in users
+- LocalStorage cart for guest users
+- Live pricing, tax, quantity update
+- Toast notifications
+- Profile sidebar
 
-Google OAuth
+### 💳 Checkout & Payment
+- Home Delivery / Dine-In Options
+- Payment Simulation (Card, UPI, COD)
+- Auto-summary generation
 
-Guest Mode – continue without signing in.
+## 📁 Project Structure
 
-Smooth animated authentication UI.
-
-🍕 Dynamic Menu & Cart
-
-Cloud Firestore Sync for logged-in users.
-
-LocalStorage Cart for guest users.
-
-Live item quantity update.
-
-Real-time total, tax & price calculation.
-
-Toast notifications for feedback.
-
-Profile sidebar for user info editing.
-
-💳 Checkout & Payment
-
-Delivery Modes:
-
-Home Delivery (Address input)
-
-Dine-In (Table selection)
-
-Payment Methods (Simulated):
-
-Card, UPI, Cash on Delivery
-
-Auto-generated order summary with subtotal, tax + delivery fee.
-
-📁 Project Structure
 📂 Pizza-Heaven/
 │
-├── signin.html          # Login / Signup / Guest Access
-├── menu.html            # Menu, Cart & Profile Sidebar
-├── payment.html         # Checkout & Payment
+├── signin.html
+├── menu.html
+├── payment.html
 │
 ├── css/
 │   ├── signin.css
@@ -64,85 +45,36 @@ Auto-generated order summary with subtotal, tax + delivery fee.
 │
 └── README.md
 
-🛠️ Technologies Used
-Category	Tools
-Frontend	HTML5, CSS3, JavaScript
-Backend	Firebase Authentication, Firestore
-Storage	Firestore (users), LocalStorage (guests)
-Icons	Font Awesome 6
-⚙️ How to Run the Project
-1. Clone the Repository
-git clone https://github.com/yourusername/pizza-heaven.git
-cd pizza-heaven
+## 🛠️ Tech Stack
+- HTML5, CSS3, JavaScript
+- Firebase Authentication
+- Cloud Firestore
+- LocalStorage
+- Font Awesome 6 Icons
 
-2. Setup Firebase
+## ⚙️ How to Run
 
-Go to Firebase Console → Create Project, then:
+1. Clone the repository:
+   git clone https://github.com/rvsr26/pizza-heaven.git
+   cd pizza-heaven
 
-Enable:
+2. Configure Firebase:
+   - Enable Auth (Email/Password + Google)
+   - Enable Firestore
+   - Copy your Firebase Config
 
-Authentication
+3. Add config to js/firebase_config.js
 
-Email/Password
+4. Open index.html or run Live Server.
 
-Google Provider
+## 🔮 Future Updates
+- Admin Panel
+- Order Tracking
+- Real Payment Gateway
+- Order History
+- Dark Mode
 
-Cloud Firestore
+---
 
-Start in Test Mode
-
-Copy your Firebase Web App configuration.
-
-3. Add Firebase Config
-
-Create or edit:
-
-js/firebase_config.js
-
-
-Add:
-
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-4. Run the Application
-
-Simply open signin.html, OR
-
-Use a local server such as VS Code Live Server (recommended for Google Sign-In).
-
-📸 Screenshots (Add when available)
-
-Sign In Page
-
-Menu & Cart
-
-Checkout & Payment
-
-🔮 Future Enhancements
-
- Admin Panel for adding/editing menu items
-
- Real Payment Integration (Stripe / Razorpay)
-
- Order Tracking with real-time updates
-
- Order History for registered users
-
- Dark Mode
-
-👨‍💻 Author
-
-Developed by the Pizza Heaven Project Team
-A full-stack web development showcase using Firebase & dynamic UI/UX.
+## 👨‍💻 Author
+VISHNU SATHWICK
