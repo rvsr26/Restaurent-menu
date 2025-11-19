@@ -24,25 +24,6 @@ The app provides a smooth and intuitive UI for both **Authenticated Users** and 
 - Payment Simulation (Card, UPI, COD)
 - Auto-summary generation
 
-## 📁 Project Structure
-📂 Pizza-Heaven/
-│
-├── signin.html
-├── menu.html
-├── payment.html
-│
-├── css/
-│ ├── signin.css
-│ ├── menu.css
-│ └── payment.css
-│
-├── js/
-│ ├── firebase_config.js
-│ ├── signin.js
-│ ├── menu.js
-│ └── payment.js
-│
-└── README.md
 
 ## 🛠️ Tech Stack
 - HTML5, CSS3, JavaScript
