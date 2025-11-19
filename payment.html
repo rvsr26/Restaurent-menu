@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Pizza Heaven</title>
+    
+    <!-- Icons & Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="payment.css">
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    
+    <!-- Logic -->
+    <script src="payment.js" defer></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <div class="logo">
+                <img src="https://i.ibb.co/ZXB7wTz/logo.png" alt="pizza heaven logo">
+            </div>
+            <a href="index.html" class="back-link"><i class="fa fa-arrow-left"></i> Back to Menu</a>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+        <div class="container checkout-grid">
+            
+            <!-- Left Column: Forms -->
+            <div class="form-section">
+                
+                <!-- Service Toggle -->
+                <div class="service-toggle">
+                    <input type="radio" id="delivery-opt" name="service_type" value="delivery" checked onchange="toggleService()">
+                    <label for="delivery-opt" class="toggle-btn"><i class="fa fa-motorcycle"></i> Home Delivery</label>
+
+                    <input type="radio" id="dinein-opt" name="service_type" value="dinein" onchange="toggleService()">
+                    <label for="dinein-opt" class="toggle-btn"><i class="fa fa-utensils"></i> Dine In</label>
+                </div>
+
+                <form id="checkoutForm" onsubmit="processOrder(event)">
+                    
+                    <!-- Common Details -->
+                    <div class="contact-common">
+                        <h3 class="step-title">Contact Details</h3>
+                        <div class="input-group">
+                            <label>Full Name</label>
+                            <input type="text" id="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="row">
+                            <div class="input-group">
+                                <label>Phone Number</label>
+                                <input type="tel" id="phone" placeholder="98765 43210" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Email (Optional)</label>
+                                <input type="email" id="email" placeholder="john@example.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Specifics -->
+                    <div id="delivery-details">
+                        <h3 class="step-title">Delivery Address</h3>
+                        <div class="input-group">
+                            <label>Address Line</label>
+                            <input type="text" id="address" placeholder="123 Street Name, Area">
+                        </div>
+                        <div class="row">
+                            <div class="input-group">
+                                <label>City</label>
+                                <input type="text" id="city">
+                            </div>
+                            <div class="input-group">
+                                <label>Pincode</label>
+                                <input type="text" id="zip">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Instructions</label>
+                            <textarea id="instructions" rows="2" placeholder="e.g., Ring doorbell twice"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Dine In Specifics -->
+                    <div id="dinein-details" style="display: none;">
+                        <h3 class="step-title">Table Reservation</h3>
+                        <p class="info-text">Reserve a table and your order will be ready when you arrive.</p>
+                        <div class="row">
+                            <div class="input-group">
+                                <label>Number of Guests</label>
+                                <input type="number" id="dinein-people" min="1" value="2">
+                            </div>
+                            <div class="input-group">
+                                <label>Arrival Time</label>
+                                <input type="time" id="dinein-time">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <h3 class="step-title">Payment Method</h3>
+                    <div class="payment-options">
+                        <div class="payment-card selected" onclick="selectPayment('card')" id="opt-card">
+                            <i class="fa fa-credit-card"></i>
+                            <span>Card</span>
+                        </div>
+                        <div class="payment-card" onclick="selectPayment('upi')" id="opt-upi">
+                            <i class="fa fa-mobile-alt"></i>
+                            <span>UPI</span>
+                        </div>
+                        <div class="payment-card" onclick="selectPayment('cod')" id="opt-cod">
+                            <i class="fa fa-money-bill-wave"></i>
+                            <span>Cash</span>
+                        </div>
+                    </div>
+
+                    <!-- Card Inputs -->
+                    <div id="pay-card" class="payment-inputs">
+                        <div class="input-group">
+                            <label>Card Number</label>
+                            <input type="text" placeholder="0000 0000 0000 0000" id="card-num" maxlength="19">
+                        </div>
+                        <div class="row">
+                            <div class="input-group">
+                                <label>Expiry</label>
+                                <input type="text" placeholder="MM/YY" id="card-exp" maxlength="5">
+                            </div>
+                            <div class="input-group">
+                                <label>CVV</label>
+                                <input type="password" placeholder="123" id="card-cvv" maxlength="3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UPI Inputs -->
+                    <div id="pay-upi" class="payment-inputs" style="display: none;">
+                        <div class="input-group">
+                            <label>UPI ID</label>
+                            <input type="text" placeholder="username@oksbi" id="upi-id">
+                        </div>
+                    </div>
+
+                    <!-- COD Message -->
+                    <div id="pay-cod" class="payment-inputs" style="display: none;">
+                        <p style="color: #555;">Please pay at the counter or to the delivery agent.</p>
+                    </div>
+
+                    <button type="submit" class="btn-pay" id="pay-btn">Pay Now</button>
+                </form>
+            </div>
+
+            <!-- Right Column: Summary -->
+            <div class="summary-section">
+                <div class="order-card">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">₹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee</span>
+                        <span id="delivery-fee">₹40</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (5%)</span>
+                        <span id="tax">₹0</span>
+                    </div>
+                    <hr>
+                    <div class="summary-row total">
+                        <span>Total Amount</span>
+                        <span id="final-total">₹0</span>
+                    </div>
+                    <div class="secure-badge">
+                        <i class="fa fa-lock"></i> 100% Secure Payment
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Processing Overlay -->
+    <div id="processing-overlay">
+        <div class="spinner"></div>
+        <h2>Processing Order...</h2>
+        <p>Please do not refresh the page.</p>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal">
+        <div class="success-content">
+            <i class="fa fa-check-circle"></i>
+            <h2>Order Confirmed!</h2>
+            <p>Your food is being prepared with love.</p>
+            <button onclick="finishOrder()" class="btn-home">Back to Home</button>
+        </div>
+    </div>
+
+</body>
+</html>
