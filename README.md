@@ -32,6 +32,26 @@ The app provides a smooth and intuitive UI for both **Authenticated Users** and 
 - LocalStorage
 - Font Awesome 6 Icons
 
+📂 Pizza-Heaven/
+│
+├── signin.html
+├── menu.html
+├── payment.html
+│
+├── css/
+│   ├── signin.css
+│   ├── menu.css
+│   └── payment.css
+│
+├── js/
+│   ├── firebase_config.js
+│   ├── signin.js
+│   ├── menu.js
+│   └── payment.js
+│
+└── README.md
+
+
 ## ⚙️ How to Run
 
 1. Clone the repository:
