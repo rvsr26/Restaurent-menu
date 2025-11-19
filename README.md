@@ -1,89 +1,148 @@
-# 🍕 Pizza Heaven – Restaurant Website
+🍕 Pizza Heaven – Modern Food Ordering Web App
 
-A fully responsive and interactive restaurant web application that allows users to browse menu items, explore food categories, and sign up or sign in to order online. Built using **HTML**, **CSS**, and **JavaScript**, this project combines modern web design with simple, functional interactivity.  
+Pizza Heaven is a responsive and user-friendly food ordering application built using HTML, CSS, JavaScript, and Google Firebase.
+It features Hybrid Authentication, real-time cart syncing, and a seamless checkout flow designed for both authenticated and guest users.
 
----
+⭐ Features
+🔐 Hybrid Authentication
 
-## 🚀 Features
+Login / Signup using:
 
-### 🏠 Main Website
-- **Fixed navigation bar** for smooth page navigation  
-- **Hero section** showcasing your restaurant or food highlights  
-- **Food categories** section with clickable images (e.g., Non-Veg Pizza, Veg Pizza, Beverages, Desserts)  
-- **Food menu** with detailed items, prices, and add-to-cart buttons  
-- **Interactive cart** displaying selected items and total price  
-- **About, Reviews, and Contact sections** for complete restaurant details  
+Email & Password
 
-### 🔐 Authentication Page (`signin.html`)
-- Dual **Sign In** and **Sign Up** forms in a single page  
-- **Animated panel transitions** between login and signup modes  
-- **Font Awesome icons** for a modern look  
-- Optional **social login buttons** (Facebook, Google, Instagram, Apple)  
-- Responsive layout with background images and smooth transitions  
+Google OAuth
 
----
+Guest Mode – continue without signing in.
 
-## 🧱 Project Structure
+Smooth animated authentication UI.
 
-```
-📂 pizza-heaven/
+🍕 Dynamic Menu & Cart
+
+Cloud Firestore Sync for logged-in users.
+
+LocalStorage Cart for guest users.
+
+Live item quantity update.
+
+Real-time total, tax & price calculation.
+
+Toast notifications for feedback.
+
+Profile sidebar for user info editing.
+
+💳 Checkout & Payment
+
+Delivery Modes:
+
+Home Delivery (Address input)
+
+Dine-In (Table selection)
+
+Payment Methods (Simulated):
+
+Card, UPI, Cash on Delivery
+
+Auto-generated order summary with subtotal, tax + delivery fee.
+
+📁 Project Structure
+📂 Pizza-Heaven/
 │
-├── index.html           # Main homepage (menu + categories)
-├── signin.html          # Login and signup page
+├── signin.html          # Login / Signup / Guest Access
+├── menu.html            # Menu, Cart & Profile Sidebar
+├── payment.html         # Checkout & Payment
 │
-├── menu.css             # Styling for menu and homepage
-├── signin.css           # Styling for the authentication page
+├── css/
+│   ├── signin.css
+│   ├── menu.css
+│   └── payment.css
 │
-├── menu.js              # Handles cart and menu interactions
-├── signin.js            # Handles login/signup toggle logic
+├── js/
+│   ├── firebase_config.js
+│   ├── signin.js
+│   ├── menu.js
+│   └── payment.js
 │
-├── /assets/             # (Optional) Folder for local images or icons
-│
-└── README.md            # Project documentation
-```
+└── README.md
 
----
+🛠️ Technologies Used
+Category	Tools
+Frontend	HTML5, CSS3, JavaScript
+Backend	Firebase Authentication, Firestore
+Storage	Firestore (users), LocalStorage (guests)
+Icons	Font Awesome 6
+⚙️ How to Run the Project
+1. Clone the Repository
+git clone https://github.com/yourusername/pizza-heaven.git
+cd pizza-heaven
 
-## 🖥️ Technologies Used
-- **HTML5** – Structure and layout  
-- **CSS3** – Styling, layout design, responsiveness  
-- **JavaScript (Vanilla)** – Interactivity and cart management  
-- **Font Awesome** – Icons  
-- **Google Fonts / Custom Fonts** – Typography  
+2. Setup Firebase
 
----
+Go to Firebase Console → Create Project, then:
 
-## ⚙️ How to Run
+Enable:
 
-1. **Download or clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/pizza-heaven.git
-   cd pizza-heaven
-   ```
+Authentication
 
-2. **Open the main page**
-   Just open `index.html` in your browser.
+Email/Password
 
-3. **Access the Sign In / Sign Up page**
-   Open `signin.html` in your browser or navigate through the site’s menu.
+Google Provider
 
----
+Cloud Firestore
 
-## 💡 Optional Enhancements
-You can extend the project by adding:  
-- Backend integration with Firebase or Node.js  
-- User authentication and order management  
-- Online payment gateway  
-- Admin dashboard for managing menu items  
+Start in Test Mode
 
----
+Copy your Firebase Web App configuration.
 
-## 📸 Preview
-**Sign In / Sign Up Page Example:**  
-![Signin Screenshot](https://i.ibb.co/KD0sJjT/poster.jpg)
+3. Add Firebase Config
 
----
+Create or edit:
 
-## 👩‍💻 Author
-**Pizza Heaven**  
-Created as a web development project for demonstrating front-end design and basic interactivity.  
+js/firebase_config.js
+
+
+Add:
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT_ID.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+4. Run the Application
+
+Simply open signin.html, OR
+
+Use a local server such as VS Code Live Server (recommended for Google Sign-In).
+
+📸 Screenshots (Add when available)
+
+Sign In Page
+
+Menu & Cart
+
+Checkout & Payment
+
+🔮 Future Enhancements
+
+ Admin Panel for adding/editing menu items
+
+ Real Payment Integration (Stripe / Razorpay)
+
+ Order Tracking with real-time updates
+
+ Order History for registered users
+
+ Dark Mode
+
+👨‍💻 Author
+
+Developed by the Pizza Heaven Project Team
+A full-stack web development showcase using Firebase & dynamic UI/UX.
