@@ -33,15 +33,15 @@ The app provides a smooth and intuitive UI for both **Authenticated Users** and 
 ├── payment.html
 │
 ├── css/
-│   ├── signin.css
-│   ├── menu.css
-│   └── payment.css
+│ ├── signin.css
+│ ├── menu.css
+│ └── payment.css
 │
 ├── js/
-│   ├── firebase_config.js
-│   ├── signin.js
-│   ├── menu.js
-│   └── payment.js
+│ ├── firebase_config.js
+│ ├── signin.js
+│ ├── menu.js
+│ └── payment.js
 │
 └── README.md
 
@@ -55,7 +55,7 @@ The app provides a smooth and intuitive UI for both **Authenticated Users** and 
 ## ⚙️ How to Run
 
 1. Clone the repository:
-   git clone https://github.com/rvsr26/pizza-heaven.git
+   git clone https://github.com/rvsr26/Restaurent-menu
    cd pizza-heaven
 
 2. Configure Firebase:
